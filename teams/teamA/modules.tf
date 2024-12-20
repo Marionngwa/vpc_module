@@ -1,3 +1,3 @@
-module "utc-app_module" {
+module "utc_github_module" {
   source = "github.com/Marionngwa/vpc_module.git"
 }
