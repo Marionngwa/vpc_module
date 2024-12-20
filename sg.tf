@@ -1,10 +1,10 @@
 resource "aws_security_group" "utc_local_sg" {
-  name        = "webserver-sg"
+  name        = var.sg_name
   description = "sg for utc app"
   vpc_id      = aws_vpc.vpc_utc_app.id
 
   tags = {
-    Name = "webserver-sg"
+    Name = var.sg_name
   }
 }
 

@@ -1,5 +1,5 @@
 resource "aws_vpc" "vpc_utc_app" {
-  cidr_block       = "172.120.0.0/16"
+  cidr_block       = var.cidr_block
   instance_tenancy = "default"
   enable_dns_support = true
   enable_dns_hostnames = true
@@ -7,7 +7,7 @@ resource "aws_vpc" "vpc_utc_app" {
   #s3_endpoint = "no"
 
   tags = {
-    Name = "utc-app1"
+    Name = var.vpc_name
     env = "dev"
     team = "wdp"
     created_by = "marion"
@@ -19,7 +19,7 @@ resource "aws_nat_gateway" "utc_nat" {
   subnet_id     = aws_subnet.utc_private[0].id
 
   tags = {
-    Name = "UTC_NAT"
+    Name = var.NAT_name
   }
 
   # To ensure proper ordering, it is recommended to add an explicit dependency
